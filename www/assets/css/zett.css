@@ -79,7 +79,7 @@ body {
     top: calc(var(--ds-spacing) + 60px);
     background: var(--ds-white);
     color: var(--ds-black);
-    padding: var(--ds-spacing-x05);
+    padding: 0;
     border: 0;
     border-radius: var(--ds-box-radius);
     box-shadow: var(--ds-shadow-medium);
@@ -87,12 +87,23 @@ body {
 }
 .zett-menu-list {
     margin: 0;
-    padding: 0;
+    padding:  var(--ds-spacing-x05) 0;
     list-style: none;
 }
 .zett-menu-item {
     margin: 0;
     padding: 0;
+}
+.zett-menu-item a {
+    display: block;
+    padding: 0 var(--ds-spacing-x05);
+    text-decoration: none;
+}
+.zett-menu-item a:hover,
+.zett-menu-item a:focus {
+    background-color: var(--ds-primary-light);
+    color: var(--ds-black);
+    cursor: pointer;
 }
 button.zett-logo {
     position: fixed;

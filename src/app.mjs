@@ -10,6 +10,10 @@ const zett = simply.app({
 	},
 	keys: {
 		default: {
+			'Control+ ': function(evt) {
+				this.app.menu.showPopover()
+				this.app.menu.querySelector('a').focus()
+			},
 			Escape: function(evt) {
 				if (this.app.container.querySelector(':popover-open')) {
 					return
