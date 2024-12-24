@@ -1,0 +1,199 @@
+:root {
+    --ds-primary: #F2E205;
+    --ds-primary-dark: #BFB304;
+    --ds-primary-contrast: var(--ds-black);
+    --ds-primary-light: #EAF205;
+    --ds-primary-gradient: linear-gradient( to left, var(--ds-primary-light), var(--ds-primary-dark) );
+    --ds-support: #7F25D9;
+    --ds-support-dark: #5C12A6;
+    --ds-support-light: #A240FC;
+    --ds-support-contrast: #FFF;
+    --ds-support-gradient: linear-gradient( to left, var(--ds-support-light), var(--ds-support-dark) );
+}
+.ds-no-margin {
+    margin: 0;
+}
+body {
+	background-attachment: fixed;
+}
+.ds-center-center {
+    position: absolute;
+    top:  50%;
+    left:  50%;
+    transform: translate(-50%, -50%);
+}
+.ds-dialog-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 11;
+    min-width:  var(--ds-spacing);
+    text-align:  center;
+    color:  var(--ds-white);
+}
+.zett-entity {
+	padding: var(--ds-spacing);
+	padding-bottom: 0;
+	}
+.zett-entity.zett-hidden:first-child,
+.zett-entity:first-child {
+		margin-top: 0;
+	}
+	.zett-entity:not(.zett-pre-entity) {
+		position: relative;
+		z-index: 11;
+	}
+	.zett-pane {
+    position: absolute;
+    top: var(--ds-spacing);
+    left: var(--ds-spacing);
+		background: white;
+		border-radius: var(--ds-box-radius);
+		margin:var(--ds-spacing);
+		overflow: auto;
+		flex-shrink: 0;
+    box-shadow: var(--ds-shadow-medium);
+    min-width: 200px;
+    min-height:  100px;
+	}
+.zett-pane:not(:last-child) {
+	border-right: none;
+}
+	.zett-pane-title {
+		border-bottom: 1px solid var(--ds-grey-20);
+		padding: 0.5em 0 0.5em var(--ds-spacing);
+	}
+	.zett-canvas {
+	}
+	.zett-entry-type {
+		display: flex;
+	}
+	.ds-badge {
+		display: flex;
+	}
+
+.zett-menu[popover] {
+    width: 250px;
+    left: auto;
+    right: var(--ds-spacing);
+    top: calc(var(--ds-spacing) + 60px);
+    background: var(--ds-white);
+    color: var(--ds-black);
+    padding: var(--ds-spacing-x05);
+    border: 0;
+    border-radius: var(--ds-box-radius);
+    box-shadow: var(--ds-shadow-medium);
+    margin: 0;
+}
+.zett-menu-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.zett-menu-item {
+    margin: 0;
+    padding: 0;
+}
+button.zett-logo {
+    position: fixed;
+    top: var(--ds-spacing);
+    right: var(--ds-spacing);
+    z-index: 10000;
+    background: transparent;
+    border: 0;
+}
+img.zett-logo {
+    height: 60px;
+    transform: scale(1, -1) translate(0, -322)    
+}
+.zett-dialog-header {
+    padding: var(--ds-spacing-x05) var(--ds-spacing);
+    padding-bottom: 0;
+}
+.zett-dialog-heading {
+	margin-bottom: 0;
+	}
+	.zett-dialog-tabs {
+		position: absolute;
+		top: 38px;
+		right: var(--ds-spacing);
+	}
+	.zett-tab-content {
+		display: none;
+	}
+	.zett-tab-content.simply-selected {
+		display: block;
+	}
+	.zett-dialog-tabs .simply-selected {
+    border: 1px solid var(--ds-tabs-border-color);
+    border-bottom: 0;
+    position: relative;
+    top: 1px;
+    line-height: calc(var(--ds-tabs-line-height) - 1px);
+    background: var(--ds-tabs-bg-color);
+	}
+	.zett-drag-handle {
+		cursor: move;
+		cursor: grab;
+		cursor: -moz-grab;
+		cursor: -webkit-grab;
+	}
+.zett-link {
+    margin-right: 0;
+}
+.ds-form-group {
+    gap:  calc(0.5 * var(--ds-input-spacing));
+}
+.ds-dropdown-right {
+    left:  auto;
+    right:  0;
+}
+.ds-dropdown-right::before {
+    left:  auto;
+    right: 0.5rem;
+    top:  -0.15rem;
+}
+.zett-undelete {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: none;
+}
+.zett-close .ds-icon,
+.zett-delete .ds-icon ,
+.zett-undelete .ds-icon {
+    height:  1em;
+    vertical-align: unset;
+}
+:root .zett-close,
+:root .zett-delete,
+:root .zett-undelete {
+    box-sizing: border-box;
+    padding:  0.1em;
+    height:  1.4em;
+    width: 1.4em;
+    min-height: auto;
+    line-height: unset;
+}
+.zett-hidden, .zett-undelete {
+    display:  none;
+}
+.zett-entity.zett-hidden .zett-delete {
+    display:  none;
+}
+.zett-entity.zett-hidden .zett-undelete {
+    display:  block;
+}
+.zett-show-deleted .zett-entity.zett-hidden {
+    display: block;
+}
+.zett-show-deleted .zett-entity:not(.zett-hidden) {
+    display:  none;
+}
+.ds-dialog {
+    z-index:  1002;
+}
+.ds-dialog-overlay {
+    z-index:  1001;
+}
