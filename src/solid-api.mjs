@@ -1,5 +1,5 @@
-import { Parser } from 'n3'
 import { getDefaultSession } from '@inrupt/solid-client-authn-browser'
+import oldmParser from '@muze-nl/oldm'
 
 export const solidSession = getDefaultSession()
 
@@ -8,7 +8,7 @@ export const solidApi = {
         let cleanUrl = new URL(url)
         cleanUrl.hash = ''
         cleanUrl = cleanUrl.href
-        const parser = new Parser({blankNodePrefix: '', baseIRI: cleanUrl})
+        const parser = new oldmParser({prefixes:solidApi.prefixes})
 		var fetchParams = {
 			mode: 'cors',
 			headers: {
@@ -37,9 +37,8 @@ export const solidApi = {
             })
             .then((text,error) => {
 				if (!error) {
-                    var prefixes = {}
-					var data = parser.parse(text, null, (prefix, url) => { prefixes[prefix] = url.id })
-                    return { data: data, prefixes: prefixes }
+					var data = parser.parse(text, url)
+                    return { data: data, prefixes: solidApi.prefixes }
 				} else {
 					throw error
 				}
