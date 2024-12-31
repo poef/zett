@@ -1,11 +1,12 @@
 {
   "name": "Zett",
   "scripts": {
-    "build": "esbuild --bundle src/app.mjs --outfile=www/assets/js/app.bundle.js",
+    "build": "esbuild --bundle src/app.mjs --outfile=www/assets/js/app.bundle.js --sourcemap",
     "watch": "nodemon --exec \"npm run build\" -e mjs"
   },
   "dependencies": {
     "@inrupt/solid-client-authn-browser": "^2.3.0",
+    "@muze-nl/oldm": "^0.2.1",
     "n3": "^1.23.1"
   },
   "devDependencies": {
