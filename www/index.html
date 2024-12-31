@@ -71,13 +71,13 @@
     </main>
 
     <dialog class="ds-dialog ds-center-center" id="zettAddFileDialog">
-        <button data-simply-command="closeDialog" class="ds-dialog-close ds-button ds-button-light ds-button-close">
+        <button data-simply-command="uiCloseDialog" class="ds-button ds-button-naked ds-dialog-close">
             <svg class="ds-icon ds-icon-feather">
-                <use xlink:href="assets/icons/feather-sprite.svg#x-circle">
+                <use xlink:href="assets/icons/feather-sprite.svg#x">
             </use></svg>
         </button>
         <div class="ds-dialog-header ds-bg-primary zett-dialog-header">
-            <h2 class="ds-no-margin">Add a resource to your worksheet</h2>
+            <h3 class="ds-no-margin">Add a resource to your worksheet</h3>
         </div>
         <div class="ds-dialog-content">
             <form class="ds-space ds-margin-up" data-simply-command="addFile">
@@ -89,52 +89,43 @@
         </div>
     </dialog>
 
-    <dialog class="ds-dialog ds-center-center" id="setIssuer">
-        <button data-simply-command="closeDialog" class="ds-dialog-close ds-button ds-button-light ds-button-close">
+    <dialog class="ds-dialog" id="zettSetIssuerDialog">
+        <button data-simply-command="uiloseDialog" class="ds-button ds-button-naked ds-dialog-close">
             <svg class="ds-icon ds-icon-feather">
-                <use xlink:href="assets/icons/feather-sprite.svg#x-circle">
+                <use xlink:href="assets/icons/feather-sprite.svg#x">
             </use></svg>
         </button>
-        <div class="ds-dialog-header ds-bg-primary">
-            <h2 class="zett-dialog-heading ds-space-horizontal">Login</h2>
-            <div class="zett-dialog-tabs ds-tabs ds-tabs-border">
-                <a class="ds-tabs-tab simply-selected" data-simply-command="simply-select" data-simply-value="solid-auth-form" data-simply-group="login-tabs">Solid</a>
-                <a class="ds-tabs-tab" data-simply-command="simply-select" data-simply-value="basic-auth-form" data-simply-group="login-tabs">Basic</a>
+        <div class="ds-dialog-header ds-bg-primary zett-dialog-header">
+            <h3 class="zett-dialog-heading ds-space-horizontal">Login</h3>
+            <div class="ui-tabs-menu ds-tabs ds-tabs-border">
+                <a class="ds-tabs-tab ui-tabs-tab ui-selected" data-simply-command="uiSelectTab" data-simply-value="solid-auth-form" data-ui-group="login-tabs">Solid</a>
+                <a class="ds-tabs-tab ui-tabs-tab" data-simply-command="uiSelectTab" data-simply-value="basic-auth-form" data-ui-group="login-tabs">Basic</a>
             </div>
         </div>
-        <div class="ds-dialog-content zett-tab-content simply-selected" id="solid-auth-form" data-simply-group="login">
-            <form class="ds-space ds-margin-up" data-simply-command="login">
-                <label>Solid WebID:
-                    <input type="url" name="issuer">
-                </label>
-                <input type="hidden" name="url" value="" data-bind="fetchUrl">
-                <button class="ds-button ds-button-primary" type="submit">Login</button>
-            </form>
-        </div>
-        <div class="ds-dialog-content zett-tab-content" id="basic-auth-form" data-simply-group="login">
-            <form class="ds-space ds-margin-up" data-simply-command="login-basic">
-                <label>Username:
-                    <input type="text" name="username">
-                </label>
-                <label>Password:
-                    <input type="password" name="password">
-                </label>
-                <input type="hidden" name="url" value="" data-bind="fetchUrl">
-                <button class="ds-button ds-button-primary" type="submit">Login</button>
-            </form>
+        <div class="ds-dialog-content ui-tabs-panes">
+            <div class="ui-tabs-pane ui-selected" id="solid-auth-form" data-ui-group="login">
+                <form class="ds-space ds-margin-up" data-simply-command="login">
+                    <label>Solid WebID:
+                        <input type="url" name="issuer">
+                    </label>
+                    <input type="hidden" name="url" value="" data-bind="fetchUrl">
+                    <button class="ds-button ds-button-primary" type="submit">Login</button>
+                </form>
+            </div>
+            <div class="ui-tabs-pane" id="basic-auth-form" data-ui-group="login">
+                <form class="ds-space ds-margin-up" data-simply-command="login-basic">
+                    <label>Username:
+                        <input type="text" name="username">
+                    </label>
+                    <label>Password:
+                        <input type="password" name="password">
+                    </label>
+                    <input type="hidden" name="url" value="" data-bind="fetchUrl">
+                    <button class="ds-button ds-button-primary" type="submit">Login</button>
+                </form>
+            </div>
         </div>
     </dialog>
-
-    <datalist id="zett-terms">
-        <option>dc:title</option>
-        <option>dc:description</option>
-    </datalist>
-    <datalist id="zett-elements">
-        <option>skos:Collection</option>
-        <option>person:Person</option>
-        <option>schema:Organization</option>
-        <option>tmo:Task</option>
-    </datalist>
 
     <template id="zett-pane">
         <div class="zett-pre-entity zett-entity ds-shadow-medium ds-bg-white" data-simply-command="showEntity">
@@ -215,7 +206,6 @@
         <option>tmo:Task</option>
     </datalist>
 
-    <script src="assets/js/simplyview/simply.everything.js"></script>
     <script src="https://unpkg.com/interactjs@1.10.11/dist/interact.min.js"></script>
     <script src="assets/js/app.bundle.js"></script>
 </body>
