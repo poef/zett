@@ -1,32 +1,23 @@
 import { transformers } from './transformers.mjs'
 import { solidApi } from './solid-api.mjs'
-// import simply/everything.mjs
+import { appui } from './appui.mjs'
+import simply from '../simplyview/src/everything.mjs'
 
-const openDialogs = []
-
-const zett = simply.app({
+export const zett = simply.app({
 	routes: {
 
 	},
 	keys: {
 		default: {
+			...appui.keys.default,
 			'Control+ ': function(evt) {
-				this.app.menu.showPopover()
-				this.app.menu.querySelector('a').focus()
-			},
-			Escape: function(evt) {
-				if (this.app.container.querySelector(':popover-open')) {
-					return
-				}
-				if (openDialogs.length) {
-					let dialog = openDialogs.pop()
-					dialog.close()
-					evt.preventDefault()
-				}
+				this.menu.showPopover()
+				this.menu.querySelector('a').focus()
 			}
 		}
 	},
 	commands: {
+		...appui.commands,
 		openLink: async function(el, value) {
 			const buttonPos = getOffset(el)
 			try {
@@ -42,23 +33,29 @@ const zett = simply.app({
 				alert(error.message) //TODO: use toast for errors
 			}
 		},
+		addFile: async function(form, values) {
+			this.actions.uiCloseDialog(this.dialogs.addFile)
+			try {
+	            const file = await this.actions.addFile(values.url)
+                window.setTimeout(() => {
+                    document.querySelector('.zett-entity').classList.remove('zett-pre-entity')
+                    document.querySelector('.zett-entity [name="value"]').focus()
+                }, 100)
+	        } catch(error) {
+                this.state.fetchUrl = values.url
+                this.actions.uiOpenModalDialog(this.dialogs.setIssuer)
+            }
+		},
 		zettMenu: async function(el, value) {
 			this.menu.togglePopover()
 		},
 		zettAddFileDialog: async function(el, value) {
 			this.menu.hidePopover()
-            this.dialogs.addFile.setAttribute('open','open')
-            openDialogs.push(this.dialogs.addFile)
-            this.dialogs.addFile.querySelector('[autofocus]')?.focus()
-		},
-		closeDialog: async function(el, value) {
-			if (openDialogs.length) {
-				let dialog = openDialogs.pop()
-				dialog.close()
-			}
+			this.actions.uiOpenModalDialog(this.dialogs.addFile)
 		}
 	},
 	actions: {
+		...appui.actions,
 		openLink: async function(url) {
 			url = new URL(url)
 			const file = await this.actions.addFile(url)
@@ -96,16 +93,23 @@ const zett = simply.app({
 	},
 	transformers,
 	state: {
+		...appui.state,
+		test: "1",
+		test2: "foo",
 		worksheets: [
 			{
+				title: 'A worksheet',
 				files: []
 			}
 		]
 	}
 })
 
+console.log('worksheets',zett.state.worksheets)
+
 zett.dialogs = {
-	addFile: document.getElementById('zettAddFileDialog')
+	addFile: document.getElementById('zettAddFileDialog'),
+	setIssuer: document.getElementById('zettSetIssuerDialog')
 }
 zett.menu = document.getElementById('zett-menu')
 
@@ -116,3 +120,5 @@ function getOffset(el) {
 		top: rect.top + window.scrollY
 	}
 }
+
+window.zett = zett
