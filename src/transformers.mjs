@@ -1,10 +1,10 @@
 export const transformers = {
-	position: function(context, next) {
-		const position = context.value
+    position: function(context, next) {
+        const position = context.value
         this.dataset.simplyPositionX = position.x || 0
         this.dataset.simplyPositionY = position.y || 0
         this.style.transform = `translate(${position.x}px, ${position.y}px`
-        return next(context)
+        return // skip next, don't render position as innerhtml
     },
     hideHidden: function(context, next) {
     	const data = context.value
