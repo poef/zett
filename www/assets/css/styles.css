@@ -1039,7 +1039,6 @@ a.ds-badge {
     min-width: 30em;
     box-shadow: var(--ds-dialog-shadow);
     padding: 0;
-    z-index: 101;
     border-radius: calc(2px + var(--ds-dialog-radius));
 }
 
