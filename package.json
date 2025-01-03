@@ -7,7 +7,8 @@
   "dependencies": {
     "@inrupt/solid-client-authn-browser": "^2.3.0",
     "@muze-nl/oldm": "^0.2.1",
-    "n3": "^1.23.1"
+    "n3": "^1.23.1",
+    "simplyview": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

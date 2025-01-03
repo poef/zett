@@ -17348,6 +17348,7 @@
         this.actions.uiSelect(el, group);
         if (target) {
           this.actions.uiSelect(target, targetGroup);
+          target.scrollIntoView();
         }
       }
     },
@@ -17390,7 +17391,7 @@
     }
   };
 
-  // simplyview/src/activate.mjs
+  // node_modules/simplyview/src/activate.mjs
   var listeners = /* @__PURE__ */ new Map();
   var activate = {
     addListener: (name, callback) => {
@@ -17450,7 +17451,7 @@
     childList: true
   });
 
-  // simplyview/src/action.mjs
+  // node_modules/simplyview/src/action.mjs
   var action_exports = {};
   __export(action_exports, {
     actions: () => actions
@@ -17468,7 +17469,7 @@
     }
   }
 
-  // simplyview/src/route.mjs
+  // node_modules/simplyview/src/route.mjs
   var route_exports = {};
   __export(route_exports, {
     routes: () => routes
@@ -17669,7 +17670,7 @@
     return routeInfo;
   }
 
-  // simplyview/src/command.mjs
+  // node_modules/simplyview/src/command.mjs
   var command_exports = {};
   __export(command_exports, {
     commands: () => commands
@@ -17793,7 +17794,7 @@
     }
   ];
 
-  // simplyview/src/key.mjs
+  // node_modules/simplyview/src/key.mjs
   var key_exports = {};
   __export(key_exports, {
     keys: () => keys
@@ -17847,7 +17848,7 @@
     return new SimplyKeys(options);
   }
 
-  // simplyview/src/state.mjs
+  // node_modules/simplyview/src/state.mjs
   var state_exports = {};
   __export(state_exports, {
     batch: () => batch,
@@ -18232,7 +18233,7 @@
     }
   }
 
-  // simplyview/src/bind.mjs
+  // node_modules/simplyview/src/bind.mjs
   var SimplyBind = class {
     constructor(options) {
       this.bindings = /* @__PURE__ */ new Map();
@@ -18682,7 +18683,7 @@
     }
   }
 
-  // simplyview/src/app.mjs
+  // node_modules/simplyview/src/app.mjs
   var SimplyApp = class {
     constructor(options = {}) {
       this.container = options.container || document.body;
@@ -18716,7 +18717,7 @@
     return new SimplyApp(options);
   }
 
-  // simplyview/src/include.mjs
+  // node_modules/simplyview/src/include.mjs
   function throttle(callbackFunction, intervalTime) {
     let eventId = 0;
     return () => {
@@ -18886,7 +18887,7 @@
   observe();
   handleChanges2();
 
-  // simplyview/src/model.mjs
+  // node_modules/simplyview/src/model.mjs
   var model_exports = {};
   __export(model_exports, {
     columns: () => columns,
@@ -19025,7 +19026,7 @@
     };
   }
 
-  // simplyview/src/everything.mjs
+  // node_modules/simplyview/src/everything.mjs
   var simply = {
     activate,
     action: action_exports,

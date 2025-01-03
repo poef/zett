@@ -1,7 +1,7 @@
 import { transformers } from './transformers.mjs'
 import { solidApi } from './solid-api.mjs'
 import { appui } from './appui.mjs'
-import simply from '../simplyview/src/everything.mjs'
+import simply from 'simplyview/src/everything.mjs'
 
 export const zett = simply.app({
 	routes: {
