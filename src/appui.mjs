@@ -25,6 +25,7 @@ export const appui = {
 			this.actions.uiSelect(el, group)
 			if (target) {
 				this.actions.uiSelect(target, targetGroup)
+				target.scrollIntoView()
 			}
 		}
 	},

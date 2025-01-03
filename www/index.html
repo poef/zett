@@ -70,14 +70,16 @@
         </template>
     </main>
 
-    <dialog class="ds-dialog ds-center-center" id="zettAddFileDialog">
-        <button data-simply-command="uiCloseDialog" class="ds-button ds-button-naked ds-dialog-close">
-            <svg class="ds-icon ds-icon-feather">
-                <use xlink:href="assets/icons/feather-sprite.svg#x">
-            </use></svg>
-        </button>
+    <dialog class="ds-dialog" id="zettAddFileDialog">
         <div class="ds-dialog-header ds-bg-primary zett-dialog-header">
-            <h3 class="ds-no-margin">Add a resource to your worksheet</h3>
+            <h3 class="ds-no-margin">
+                Add a resource to your worksheet
+                <button data-simply-command="uiCloseDialog" class="ds-button-naked ds-dialog-close">
+                    <svg class="ds-icon ds-icon-feather">
+                        <use xlink:href="assets/icons/feather-sprite.svg#x">
+                    </use></svg>
+                </button>
+            </h3>
         </div>
         <div class="ds-dialog-content">
             <form class="ds-space ds-margin-up" data-simply-command="addFile">
@@ -90,13 +92,15 @@
     </dialog>
 
     <dialog class="ds-dialog" id="zettSetIssuerDialog">
-        <button data-simply-command="uiloseDialog" class="ds-button ds-button-naked ds-dialog-close">
-            <svg class="ds-icon ds-icon-feather">
-                <use xlink:href="assets/icons/feather-sprite.svg#x">
-            </use></svg>
-        </button>
         <div class="ds-dialog-header ds-bg-primary zett-dialog-header">
-            <h3 class="zett-dialog-heading ds-space-horizontal">Login</h3>
+            <h3 class="zett-dialog-heading ds-space-horizontal">
+                Login
+                <button data-simply-command="uiloseDialog" class="ds-button-naked ds-dialog-close">
+                    <svg class="ds-icon ds-icon-feather">
+                        <use xlink:href="assets/icons/feather-sprite.svg#x">
+                    </use></svg>
+                </button>
+            </h3>
             <div class="ui-tabs-menu ds-tabs ds-tabs-border">
                 <a class="ds-tabs-tab ui-tabs-tab ui-selected" data-simply-command="uiSelectTab" data-simply-value="solid-auth-form" data-ui-group="login-tabs">Solid</a>
                 <a class="ds-tabs-tab ui-tabs-tab" data-simply-command="uiSelectTab" data-simply-value="basic-auth-form" data-ui-group="login-tabs">Basic</a>

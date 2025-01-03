@@ -24,8 +24,7 @@ body {
 }
 .ds-dialog-close {
     position: absolute;
-    top: 0;
-    right: 0;
+    right: var(--ds-spacing-x05);
     z-index: 11;
     min-width:  var(--ds-spacing);
     text-align:  center;
@@ -185,7 +184,7 @@ img.zett-logo {
 
 .ui-tabs-menu {
     position: absolute;
-    right: var(--ds-spacing);
+    right: calc(2 * var(--ds-spacing));
     margin-top: calc(-2px - var(--ds-line-height));
 }
 .ui-tabs-tab {
@@ -195,22 +194,45 @@ img.zett-logo {
     top: 1px;
     line-height: calc(var(--ds-tabs-line-height) - 1px);
     background:
-        linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0) 8px, rgba(0,0,0,0)),
+        linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0) 4px, rgba(0,0,0,0)),
         var(--ds-tabs-bg-color);
     opacity: 0.7;
+    box-shadow: var(--ds-shadow-medium);
 }
 .ui-tabs-tab.ui-selected {
     opacity: 1;
     background: var(--ds-tabs-bg-color);
 }
 .ui-tabs-pane {
-    display: none;
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
 }
 .ui-tabs-pane.ui-selected {
-    display: block;
+    z-index: 1;
+    left: 0;
+}
+.ui-tabs-panes {
+    display: flex;
+    width: 100%;
+    overflow-x: hidden;
 }
 .zett-dialog-header {
+    overflow: hidden;
     background: 
-        linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0) 8px, rgba(0,0,0,0)),
+        linear-gradient(to top, rgba(0,0,0,0.2), rgba(0,0,0,0) 10px, rgba(0,0,0,0)),
         linear-gradient(to top, var(--ds-primary) 0%, var(--ds-primary) 100%);
+}
+.ds-button-naked {
+    border: 0;
+    box-shadow: none;
+    font-size: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+.ds-button-naked:hover,
+.ds-button-naked:focus {
+    box-shadow: var(--ds-shadow-medium);
 }
