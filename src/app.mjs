@@ -1,15 +1,38 @@
 import { transformers } from './transformers.mjs'
 import { solidApi } from './solid-api.mjs'
 import { appui } from './appui.mjs'
-import simply from 'simplyview/src/everything.mjs'
+import simply from 'simplyview'
 
-export const zett = simply.app({
+const imports = {
+	keys: {
+		default: {
+			...appui.keys.default
+		}
+	},
 	routes: {
 
 	},
+	commands: {
+		...appui.commands
+	},
+	actions: {
+		...appui.actions
+	},
+	state: {
+		...appui.state
+	},
+	transformers: {
+		...transformers
+	}
+}
+
+export const zett = simply.app({
+	routes: {
+		...imports.routes
+	},
 	keys: {
 		default: {
-			...appui.keys.default,
+			...imports.keys.default,
 			'Control+ ': function(evt) {
 				this.menu.showPopover()
 				this.menu.querySelector('a').focus()
@@ -17,7 +40,7 @@ export const zett = simply.app({
 		}
 	},
 	commands: {
-		...appui.commands,
+		...imports.commands,
 		openLink: async function(el, value) {
 			const buttonPos = getOffset(el)
 			try {
@@ -55,7 +78,7 @@ export const zett = simply.app({
 		}
 	},
 	actions: {
-		...appui.actions,
+		...imports.actions,
 		openLink: async function(url) {
 			url = new URL(url)
 			const file = await this.actions.addFile(url)
@@ -87,15 +110,15 @@ export const zett = simply.app({
 				data,
 				prefixes: file.prefixes
 			})
-			this.state.file = worksheet.files.lenght - 1
+			this.state.file = worksheet.files.length - 1
 			return file
 		}
 	},
-	transformers,
+	transformers: {
+		...imports.transformers
+	},
 	state: {
-		...appui.state,
-		test: "1",
-		test2: "foo",
+		...imports.state,
 		worksheets: [
 			{
 				title: 'A worksheet',
@@ -104,8 +127,6 @@ export const zett = simply.app({
 		]
 	}
 })
-
-console.log('worksheets',zett.state.worksheets)
 
 zett.dialogs = {
 	addFile: document.getElementById('zettAddFileDialog'),
