@@ -1,16 +1,19 @@
 {
   "name": "Zett",
   "scripts": {
-    "build": "esbuild --bundle src/app.mjs --outfile=www/assets/js/app.bundle.js --sourcemap",
+    "build": "node ./esbuild.mjs",
     "watch": "nodemon --exec \"npm run build\" -e mjs"
   },
   "dependencies": {
-    "@inrupt/solid-client-authn-browser": "^2.3.0",
-    "@muze-nl/oldm": "^0.2.1",
+    "@muze-nl/jaqt": "^0.9.8",
+    "@muze-nl/metro": "^0.6.5",
+    "@muze-nl/metro-oidc": "^0.3.4",
+    "@muze-nl/oldm": "^0.3.1",
     "n3": "^1.23.1",
-    "simplyview": "^3.0.0"
+    "simplyview": "^3.0.2"
   },
   "devDependencies": {
+    "esbuild": "^0.25.0",
     "nodemon": "^3.1.9"
   }
 }
